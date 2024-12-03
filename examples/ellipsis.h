@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cstdarg>
-#include <cstdint>
 #include <iostream>
 
 namespace
