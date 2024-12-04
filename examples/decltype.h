@@ -104,5 +104,37 @@ namespace Decltype
         std::cout << "decltype(WhatIsTheType<decltype((lvalue_int))>()) is " << TypeName<decltype(WhatIsTheType<decltype((lvalue_int))>())>() << "\n";
 
         std::cout << "END - Decltype\n\n";
+
+/*
+        START - Decltype
+        decltype(lvalue_int) is int
+        decltype((lvalue_int)) is int&
+        decltype(const_lvalue_int) is const int
+        decltype((const_lvalue_int)) is const int&
+        decltype(static_cast<int&>(lvalue_int)) is int&
+        decltype(static_cast<int&&>(lvalue_int)) is int&&
+        decltype(static_cast<int>(lvalue_int)) is int
+        decltype(lvalue()) is int
+        decltype(const_lvalue()) is int
+        decltype(lvalue_ref()) is int&
+        decltype(const_lvalue_ref()) is const int&
+        decltype(rvalue_ref()) is int&&
+        decltype(const_rvalue_ref()) is const int&&
+        decltype(Default().lvalue()) is int
+        decltype(std::declval<Default>().lvalue()) is int
+        decltype(std::declval<NonDefault>().lvalue()) is int
+        decltype(auto_int_lvalue) is int
+        decltype(auto_const_int_lvalue) is const int
+        decltype(auto_const_int_lvalue_ref) is const int&
+        decltype(auto_const_int_lvalue_ptr) is const int*
+        decltype(auto_const_int_lvalue_ptr2) is const int*const
+        decltype(auto_const_int_lvalue_ptr3) is const int*
+        decltype(auto_const_int_lvalue_ptr4) is const int*const
+        decltype(auto_const_int_lvalue_ptr5) is const int*
+        decltype(auto_int_lvalue_ptr) is int*
+        decltype(WhatIsTheType<decltype(lvalue_int)>()) is int
+        decltype(WhatIsTheType<decltype((lvalue_int))>()) is int&
+        END - Decltype
+*/
     }
 }

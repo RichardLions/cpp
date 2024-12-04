@@ -111,5 +111,23 @@ namespace VariadicTemplates
         std::cout << Sum2(1, 2, 3) << " == Sum2(1, 2, 3)\n";
 
         std::cout << "END - Variadic Templates\n\n";
+
+/*
+        START -  Variadic Templates
+        Auto 1.23
+        Double 1.23
+        Bool 1
+        Auto 123
+        1 == Sum(1)
+        3 == Sum(1, 2)
+        6 == Sum(1, 2, 3)
+        1 == Sum1(1)
+        3 == Sum1(1, 2)
+        6 == Sum1(1, 2, 3)
+        2 == Sum2(1)
+        9 == Sum2(1, 2)
+        24 == Sum2(1, 2, 3)
+        END - Variadic Templates
+*/
     }
 }
