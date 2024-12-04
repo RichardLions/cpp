@@ -138,6 +138,7 @@
     <ClCompile Include="variadictemplates.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="decltype.h" />
     <ClInclude Include="ellipsis.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

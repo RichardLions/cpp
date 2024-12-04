@@ -15,5 +15,8 @@
     <ClInclude Include="ellipsis.h">
       <Filter>Examples</Filter>
     </ClInclude>
+    <ClInclude Include="decltype.h">
+      <Filter>Examples</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

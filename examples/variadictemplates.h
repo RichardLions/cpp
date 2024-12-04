@@ -7,21 +7,21 @@
 namespace
 {
     // Pack expansion is either space or comma separated based on the context
-    template<class... Ts> // Ts the type of the parameter pack
+    template<typename... Ts> // Ts the type of the parameter pack
     inline auto Sum(Ts... args) // args is a parameter pack
     {
         // Space separated - Sum(T1, T2, T3) expands to (T1 + T2 + T3)
         return (args + ...); // Parameter unpack (Pack Expansion)
     }
 
-    template<class... Ts>
+    template<typename... Ts>
     inline auto Sum1(Ts... args)
     {
         // Comma separated - Sum1(T1, T2, T3) expands to Sum(T1, T2, T3)
         return Sum(args...);
     }
 
-    template<class... Ts>
+    template<typename... Ts>
     inline auto Sum2(Ts... args)
     {
         // Will expand the inner most pack first
@@ -30,11 +30,11 @@ namespace
     }
 
     // Expanding two parameter packs at the same time
-    template<class... Ts>
+    template<typename... Ts>
     class ParamPackT
     {
     public:
-        template<class... Us>
+        template<typename... Us>
         class ParamPackU
         {
         public:
@@ -44,7 +44,7 @@ namespace
         };
     };
 
-    template<class... Ts>
+    template<typename... Ts>
     class VariadicClassInheritance final : public Ts... // Parameter expansion with inheritance. Note: Each type must be unique
     {
     public:
@@ -110,6 +110,6 @@ namespace VariadicTemplates
         std::cout << Sum2(1, 2) << " == Sum2(1, 2)\n";
         std::cout << Sum2(1, 2, 3) << " == Sum2(1, 2, 3)\n";
 
-        std::cout << "END - Variadic Templates\n";
+        std::cout << "END - Variadic Templates\n\n";
     }
 }

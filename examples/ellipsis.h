@@ -39,6 +39,6 @@ namespace Ellipsis
         // Example
         std::cout << Max(5, 0, 4, -1, 8, 4) << " == Max(5, 0, 4, -1, 8, 4)\n";
 
-        std::cout << "END - Ellipsis\n";
+        std::cout << "END - Ellipsis\n\n";
     }
 }
