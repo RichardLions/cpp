@@ -7,6 +7,13 @@
 namespace
 {
     // Pack expansion is either space or comma separated based on the context
+    template<uint32_t value, typename... Ts>
+    bool ContainsValue(Ts... args)
+    {
+        // Space separated - ContainsValue<value>(T1, T2, T3) expends to ((T1 == value) || (T2 == value) || (T3 == value))
+        return ((args == value) || ...);
+    }
+
     template<typename... Ts> // Ts the type of the parameter pack
     inline auto Sum(Ts... args) // args is a parameter pack
     {
@@ -25,7 +32,7 @@ namespace
     inline auto Sum2(Ts... args)
     {
         // Will expand the inner most pack first
-        // Sum2(T1, T2) expands to Sum(Sum(T1, T2) + T1, Sum(T1, T2) + T2))
+        // Space and comma separated - Sum2(T1, T2) expands to Sum(Sum(T1, T2) + T1, Sum(T1, T2) + T2))
         return Sum(Sum(args...) + args...);
     }
 
@@ -98,6 +105,8 @@ namespace VariadicTemplates
         valuePrinter(true);
         valuePrinter(123);
 
+        std::cout << std::boolalpha; // Print bools as true/false instead of 1/0
+
         std::cout << Sum(1) << " == Sum(1)\n";
         std::cout << Sum(1, 2) << " == Sum(1, 2)\n";
         std::cout << Sum(1, 2, 3) << " == Sum(1, 2, 3)\n";
@@ -109,6 +118,13 @@ namespace VariadicTemplates
         std::cout << Sum2(1) << " == Sum2(1)\n";
         std::cout << Sum2(1, 2) << " == Sum2(1, 2)\n";
         std::cout << Sum2(1, 2, 3) << " == Sum2(1, 2, 3)\n";
+
+        std::cout << ContainsValue<1>(1) << " == ContainsValue<1>(1)\n";
+        std::cout << ContainsValue<1>(0) << " == ContainsValue<1>(0)\n";
+        std::cout << ContainsValue<1>(1, 2, 3) << " == ContainsValue<1>(1, 2, 3)\n";
+        std::cout << ContainsValue<1>(3, 2, 1) << " == ContainsValue<1>(3, 2, 1)\n";
+        std::cout << ContainsValue<1>(3, 1, 2) << " == ContainsValue<1>(3, 1, 2)\n";
+        std::cout << ContainsValue<1>(2, 3, 4) << " == ContainsValue<1>(2, 3, 4)\n";
 
         std::cout << "END - Variadic Templates\n\n";
 
@@ -127,6 +143,12 @@ namespace VariadicTemplates
         2 == Sum2(1)
         9 == Sum2(1, 2)
         24 == Sum2(1, 2, 3)
+        true == ContainsValue<1>(1)
+        false == ContainsValue<1>(0)
+        true == ContainsValue<1>(1, 2, 3)
+        true == ContainsValue<1>(3, 2, 1)
+        true == ContainsValue<1>(3, 1, 2)
+        false == ContainsValue<1>(2, 3, 4)
         END - Variadic Templates
 */
     }
