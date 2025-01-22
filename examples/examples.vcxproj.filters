@@ -18,5 +18,8 @@
     <ClInclude Include="decltype.h">
       <Filter>Examples</Filter>
     </ClInclude>
+    <ClInclude Include="classoperators.h">
+      <Filter>Examples</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -138,6 +138,7 @@
     <ClCompile Include="variadictemplates.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="classoperators.h" />
     <ClInclude Include="decltype.h" />
     <ClInclude Include="ellipsis.h" />
   </ItemGroup>
